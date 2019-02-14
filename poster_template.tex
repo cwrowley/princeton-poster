@@ -1,0 +1,157 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template for Princeton poster
+% Clancy Rowley, Feb 2019
+%
+% Modified from the following:
+% Jacobs Landscape Poster
+% LaTeX Template
+% Version 1.0 (29/03/13)
+%
+% Created by:
+% Computational Physics and Biophysics Group, Jacobs University
+% https://teamwork.jacobs-university.de:8443/confluence/display/CoPandBiG/LaTeX+Poster
+% 
+% Further modified by:
+% Nathaniel Johnston (nathaniel@njohnston.ca)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[final]{beamer}
+\usepackage[scale=1.24]{beamerposter}
+\usetheme{princetonposter}
+\usefonttheme{professionalfonts}  % for standard LaTeX math font
+
+%-----------------------------------------------------------
+% Define the column widths and overall poster size
+% To set effective sepwid, onecolwid and twocolwid values, first choose how many columns you want and how much separation you want between columns
+% In this template, the separation width chosen is 0.024 of the paper width and a 4-column layout
+% onecolwid should therefore be (1-(# of columns+1)*sepwid)/# of columns e.g. (1-(4+1)*0.024)/4 = 0.22
+% Set twocolwid to be (2*onecolwid)+sepwid = 0.464
+% Set threecolwid to be (3*onecolwid)+2*sepwid = 0.708
+
+\newlength{\sepwid}
+\newlength{\onecolwid}
+\newlength{\twocolwid}
+\newlength{\threecolwid}
+\setlength{\paperwidth}{48in} % A0 width: 46.8in
+\setlength{\paperheight}{36in} % A0 height: 33.1in
+\setlength{\sepwid}{0.024\paperwidth} % Separation width (white space) between columns
+\setlength{\onecolwid}{0.22\paperwidth} % Width of one column
+\setlength{\twocolwid}{0.464\paperwidth} % Width of two columns
+\setlength{\threecolwid}{0.708\paperwidth} % Width of three columns
+\setlength{\topmargin}{-0.5in} % Reduce the top margin size
+
+\setlength\parindent{24pt}
+
+\title{Title of Poster}
+
+\author{Author One and Author Two} % Author(s)
+
+\institute{Princeton University, Mechanical and Aerospace Engineering} % Institution(s)
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\begin{frame}[t] % The whole poster is enclosed in one beamer frame
+\begin{columns}[t]
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+%--------------------
+% First column
+%--------------------
+\begin{column}{\onecolwid}
+
+\begin{alertblock}{Objectives}
+\begin{itemize}
+\item The first objective
+\item The second objective
+\end{itemize}
+\end{alertblock}
+
+\begin{block}{Introduction}
+  This work needs no introduction.  
+\end{block}
+
+\begin{figure}
+  \centering
+  % \includegraphics[width=0.8\textwidth]{filename}
+  Hello world
+\caption{Figure caption}
+\end{figure}
+
+\end{column} % End of the first column
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+%--------------------
+% Second column
+%--------------------
+\begin{column}{\onecolwid}
+
+\begin{block}{Another section}
+  Here is a formula:
+  \begin{equation*}
+    \sum_{n=1}^N \frac{1}{n} < \log (N+1)
+  \end{equation*}
+\end{block}
+
+\begin{block}{Yet another section}
+Here is some more work.
+\end{block}
+
+\end{column} % End of the second column
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+%--------------------
+% Third column
+%--------------------
+\begin{column}{\onecolwid}
+
+\begin{block}{The Third Column}
+\begin{itemize}
+    \item Item one
+    \item Item two
+    \item Item three
+\end{itemize}
+\end{block}
+
+\end{column} % End of the third column
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+%--------------------
+% Fourth column
+%--------------------
+\begin{column}{\onecolwid} % The fourth column
+
+\begin{block}{The Fourth and Final Column}
+This is the last one.
+\end{block}
+
+\begin{block}{Conclusion}
+\begin{itemize}
+\item The first conclusion
+\item The second conclusion
+\end{itemize}
+\end{block}
+
+%--------------------
+% References
+%--------------------
+% \begin{block}{References}
+
+% % \nocite{*} % Insert publications even if they are not cited in the poster
+% \small{\bibliographystyle{unsrt}
+% \bibliography{RowleyGroupReferences}\vspace{0.75in}}
+
+% \end{block}
+
+\end{column} % End of the fourth column
+\end{columns} % End of all the columns in the poster
+\end{frame} % End of the enclosing frame
+\end{document}

@@ -1,0 +1,173 @@
+% ==============================================================================
+% Beamer theme for Princeton posters
+% Clancy Rowley, February 2019
+%
+% Modified from the following:
+% Beamer style for the poster template posted at
+% http://www.nathanieljohnston.com/2009/08/latex-poster-template/
+%
+% Created by the Computational Physics and Biophysics Group at Jacobs University
+% https://teamwork.jacobs-university.de:8443/confluence/display/CoPandBiG/LaTeX+Poster
+% Modified by Nathaniel Johnston (nathaniel@nathanieljohnston.com) in August 2009
+% =============================================================================
+
+\ProvidesPackage{beamerthemeprincetonposter}
+\RequirePackage{tikz}   % for drawing the shaded rules
+\newcommand{\makeruleinbox}{{\usebeamercolor[bg]{block alerted title}\centering\hspace*{-0.7cm}\rule{\inboxrule}{0.5cm}}}
+\usepackage{ragged2e}
+
+% Spacing before and inside list environments to add white space before lists and between items inside lists
+\makeatletter
+\def\@listi{\leftmargin\leftmarginii
+\topsep 1ex % Spacing before lists
+\parsep 0\p@ \@plus\p@
+\itemsep 6pt} % Spacing between items
+\makeatother
+
+\usecaptiontemplate{\small\structure{\insertcaptionname~\insertcaptionnumber: } \insertcaption} % A fix for figure numbering
+
+\setlength{\belowcaptionskip}{2ex} % White space under figures
+\setlength\belowdisplayshortskip{2ex} % White space under equations
+
+\definecolor{PrincetonOrange}{RGB}{232, 117, 17 }       % Pantone 158
+\definecolor{Blue72}         {RGB}{0,    24, 168}       % Approximate Pantone BLUE-072
+
+% set the basic colors
+\setbeamercolor{palette primary}   {fg=black,bg=white}
+\setbeamercolor{palette secondary} {fg=black,bg=white}
+\setbeamercolor{palette tertiary}  {bg=PrincetonOrange,fg=white}
+\setbeamercolor{palette quaternary}{fg=black,bg=white}
+
+% set colors for headline
+\setbeamercolor{title in headline}{fg=PrincetonOrange,bg=white}
+\setbeamercolor{author in headline}{fg=black,bg=white}
+\setbeamercolor{institute in headline}{fg=black,bg=white}
+
+% set colors for itemize/enumerate
+\setbeamercolor{item}{fg=Blue72}
+\setbeamercolor{item projected}{fg=white,bg=Blue72}
+
+% set colors for blocks
+\setbeamercolor{block title}{fg=Blue72,bg=white}
+\setbeamercolor{block body}{fg=black,bg=white}
+
+% set colors for alerted blocks (blocks with frame)
+\setbeamercolor{block alerted title}{fg=white,bg=PrincetonOrange!70}
+\setbeamercolor{block alerted body}{fg=black,bg=PrincetonOrange!10}
+
+% set the fonts
+\setbeamerfont{section in head/foot}{series=\bfseries}
+\setbeamerfont{block title}{series=\bfseries,family=\sffamily}
+\setbeamerfont{block alerted title}{series=\bfseries,family=\sffamily}
+\setbeamerfont{frametitle}{series=\bfseries,family=\sffamily}
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamerfont{block body}{series=\rmfamily}
+
+% set some beamer theme options
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]
+\setbeamertemplate{sections/subsections in toc}[square]
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{blocks}[width=0.0]
+\beamertemplatenavigationsymbolsempty
+
+% set bibliography style
+\setbeamertemplate{bibliography item}[text]
+\setbeamercolor{bibliography item}{fg=black,bg=white}
+\setbeamercolor{bibliography entry author}{fg=black,bg=white}
+\setbeamercolor{bibliography item}{fg=black,bg=white}
+
+% define some length variables that are used by the template
+\newlength{\inboxwd}
+\newlength{\iinboxwd}
+\newlength{\inboxrule}
+
+%==============================================================================
+% build the poster title
+%==============================================================================
+\setbeamertemplate{headline}{
+  \leavevmode
+  \begin{columns}
+   \begin{column}{\linewidth}
+     \vskip1cm
+     \centering
+     \usebeamercolor{title in
+       headline}{\color{fg}\Huge{\textbf{\inserttitle}}\\[0.5ex]}
+     \usebeamercolor{author in headline}{\color{fg}\Large{\insertauthor}\\[1ex]}
+     \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}
+   \end{column}
+ \end{columns}
+ \vspace{1cm}
+ \centerline{\textcolor{PrincetonOrange}{\rule{0.95\textwidth}{3mm}}}
+ \vspace{3mm}
+}
+
+% Block definition
+\setbeamertemplate{block begin}
+{
+  \par\vskip\medskipamount
+  \begin{beamercolorbox}[colsep*=0ex,dp={2ex},center]{block title}
+    \vskip-0.25cm
+    \usebeamerfont{block title}\large\insertblocktitle
+    \begin{flushleft}
+    \vskip-1cm
+    \begin{tikzpicture}[remember picture,overlay]
+      \shade [inner color=gray,outer color=white]
+      (0,0) rectangle (\textwidth,0.3cm);
+    \end{tikzpicture}
+    \end{flushleft}
+  \end{beamercolorbox}
+  {\parskip0pt\par}
+  \ifbeamercolorempty[bg]{block title}
+  {}
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}
+  \usebeamerfont{block body}
+  \vskip-0.5cm
+  \begin{beamercolorbox}[colsep*=0ex,vmode]{block body}
+  \justify
+}
+
+\setbeamertemplate{block end}
+{
+  \end{beamercolorbox}
+  \vskip\smallskipamount
+  \vspace*{2ex}
+}
+
+% Alert block definition (with frame)
+\setbeamertemplate{block alerted begin}
+{
+  \par\vskip\medskipamount
+  \begin{beamercolorbox}[sep=0ex,rounded=true,center,dp={2ex}]{block alerted title}
+    \vskip0.01cm
+    \usebeamerfont{block title}\large\insertblocktitle
+  \end{beamercolorbox}
+  {\parskip0pt\par}
+  \usebeamerfont{block body}
+  \vskip-0.8cm
+  \begin{beamercolorbox}[sep=0.5cm,rounded=true,center]{block alerted title}
+  \setlength{\inboxwd}{\linewidth}
+  \addtolength{\inboxwd}{-1cm}
+  \begin{beamercolorbox}[rounded=true,wd={\inboxwd},center]{block alerted body}
+  \setlength{\iinboxwd}{\inboxwd}
+  \setlength{\inboxrule}{\inboxwd}
+  \addtolength{\iinboxwd}{-0.5cm}
+  \addtolength{\inboxrule}{0.5cm}
+  \begin{center}
+  \begin{minipage}{\iinboxwd}
+  \justifying
+}
+
+\setbeamertemplate{block alerted end}
+{
+  \end{minipage}
+  \end{center}
+  \end{beamercolorbox}
+  \end{beamercolorbox}
+  \vskip\smallskipamount
+  \vspace*{2ex}
+}
+\setbeamertemplate{footline}
+{%
+  \hfill\includegraphics[scale=0.3]{Princeton_logo_svg.png}\hspace{1cm}
+  \vspace{2cm}
+}
