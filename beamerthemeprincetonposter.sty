@@ -16,13 +16,16 @@
 \newcommand{\makeruleinbox}{{\usebeamercolor[bg]{block alerted title}\centering\hspace*{-0.7cm}\rule{\inboxrule}{0.5cm}}}
 \usepackage{ragged2e}
 
-% Spacing before and inside list environments to add white space before lists and between items inside lists
-\makeatletter
+% Spacing before and inside list environments to add white space before lists
+% and between items inside lists
 \def\@listi{\leftmargin\leftmarginii
 \topsep 1ex % Spacing before lists
 \parsep 0\p@ \@plus\p@
 \itemsep 6pt} % Spacing between items
-\makeatother
+
+% Make itemize environments justified
+\let\origin@litem\item
+\renewcommand{\item}{\origin@litem\justifying}
 
 \usecaptiontemplate{\small\structure{\insertcaptionname~\insertcaptionnumber: } \insertcaption} % A fix for figure numbering
 
@@ -37,6 +40,8 @@
 \setbeamercolor{palette secondary} {fg=black,bg=white}
 \setbeamercolor{palette tertiary}  {bg=PrincetonOrange,fg=white}
 \setbeamercolor{palette quaternary}{fg=black,bg=white}
+\setbeamercolor{structure}         {fg=Blue72,bg=white}
+\setbeamercolor{alerted text}      {fg=PrincetonOrange,bg=white}
 
 % set colors for headline
 \setbeamercolor{title in headline}{fg=PrincetonOrange,bg=white}
@@ -123,7 +128,8 @@
   \usebeamerfont{block body}
   \vskip-0.5cm
   \begin{beamercolorbox}[colsep*=0ex,vmode]{block body}
-  \justify
+  \justifying
+  \setlength{\parindent}{2em}\@afterindentfalse\@afterheading
 }
 
 \setbeamertemplate{block end}
@@ -155,6 +161,7 @@
   \begin{center}
   \begin{minipage}{\iinboxwd}
   \justifying
+  \setlength{\parindent}{2em}\@afterindentfalse\@afterheading
 }
 
 \setbeamertemplate{block alerted end}
